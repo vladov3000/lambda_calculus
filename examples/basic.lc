@@ -1,0 +1,34 @@
+# Functions
+id      = \a.a
+const   = \a.\b.a
+compose = \f.\g.\x.(g (f x))
+
+# Bool
+true  = \t.\f.t
+false = \t.\f.f
+and   = \a.\b.(a b false)
+or    = \a.\b.(a true b)
+not   = \a.(a false true)
+
+# Maybe
+nothing = \j.\n.n
+just    = \x.\j.\n.(j x)
+maybe   = \b.\f.\a.(a f b)
+
+# Either
+left   = \x.\l.\r.(l x)
+right  = \x.\l.\r.(r x)
+either = \f.\g.\e.(e f g)
+
+# Tuple
+tuple   = \a.\b.\f.(f a b)
+fst     = \t.(\a.\b.a t)
+snd     = \t.(\a.\b.b t)
+curry   = \f.\a.\b.(f (tuple a b))
+uncurry = \f.\t.(t f)
+
+# Natural Numbers
+increment = \x.\s.\z.(s x)
+zero      = \s.\z.z
+
+main = (increment (increment zero))
